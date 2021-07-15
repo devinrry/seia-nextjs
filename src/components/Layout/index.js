@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 const Layout = ({ children, seoData, isNoIndex }) => {
@@ -43,7 +45,125 @@ const Layout = ({ children, seoData, isNoIndex }) => {
         {/* Canonical */}
         <link rel="canonical" href={`${canonicalUrl}${canonicalPath}`} />
       </Head>
+      <nav className="navbar fixed-top navbar-expand-lg navbar-light">
+        <div className="container">
+          <Link className="navbar-brand" href="/" passHref>
+            <Image src="/img/logo-seia-web.png" alt="logo" height="40" />
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <div className="mx-auto"></div>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link href="/" className="nav-link" passHref>
+                  Beranda
+                </Link>
+              </li>
+              <li className="nav-item dropdown">
+                <a
+                  href=""
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Layanan
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link href="/branding" className="dropdown-item" passHref>
+                      Branding & Design
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/content" className="dropdown-item" passHref>
+                      Content Provider
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/web-dev" className="dropdown-item" passHref>
+                      Website Development
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/workshop" className="dropdown-item" passHref>
+                      Workshop
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li className="nav-item">
+                <Link href="/about" className="nav-link">
+                  Tentang Kami
+                </Link>
+              </li>
+              <li className="nav-item">
+                <a href="" className="nav-link">
+                  Kontak
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       {children}
+      <footer>
+        <div className="container">
+          <div className="row text-white">
+            <div className="col-lg-6 col-md-12">
+              <h3>SEIA</h3>
+              <ul className="social-link">
+                <li>
+                  <a href="">
+                    <i className="fas fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i className="fas fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i className="fas fa-instagram"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="contact-info col-lg-6 col-md-12">
+              <h5>Alamat</h5>
+              <ul>
+                <li>
+                  {/* <i className="fas fa-map-marker-alt"></i> */}
+                  <a href="">
+                    Perumahan Tiara Indah No. 3, Jl. Dr. Soebandi, Patrang,
+                    Jember, Jawa Timur - Indonesia. 68111
+                  </a>
+                </li>
+                <li>
+                  {/* <i className="fas fa-phone-alt"></i> */}
+                  <a href="">+6283898598090</a>
+                </li>
+                <li>
+                  {/* <i className="fas fa-envelope"></i> */}
+                  <a href="">seia@kodekoding.com</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
     </Fragment>
   );
 };
