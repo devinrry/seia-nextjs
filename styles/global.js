@@ -5,12 +5,12 @@ export default css.global`
     font-size: 14px;
   }
 
-  .navbar a {
+  .navbar .nav-item {
     font-size: 14px;
     font-weight: 600;
   }
 
-  .navbar a:hover {
+  .navbar .nav-item:hover {
     color: #fe4a55;
   }
 

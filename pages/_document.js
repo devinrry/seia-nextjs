@@ -10,7 +10,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="author" content="KOBAR SEPTYANUS" />
+          <meta name="author" content="DEVI" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -48,6 +48,10 @@ class MyDocument extends Document {
           />
           <link rel="apple-touch-icon" href="/apple-icon.png"></link>
           <meta name="theme-color" content="#317EFB" />
+          <script
+            async
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+          />
         </Head>
         <body>
           <Main />

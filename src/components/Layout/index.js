@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,6 +7,28 @@ import { useRouter } from 'next/router';
 const Layout = ({ children, seoData, isNoIndex }) => {
   const { asPath: canonicalPath } = useRouter();
   const canonicalUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
+
+  // const [scrollActive, setScrollActive] = useState(true);
+
+  useEffect(() => {
+    const nav = document.querySelector('nav');
+
+    document.addEventListener('scroll', () => {
+      if (window.pageYOffset > 80) {
+        nav.classList.add('bg-white', 'shadow-sm');
+      } else {
+        nav.classList.remove('bg-white', 'shadow-sm');
+      }
+    });
+  }, []);
+
+  // window.addEventListener('scroll', function () {
+  //   if (window.pageYOffset > 80) {
+  //     nav.classList.add('bg-white', 'shadow-sm');
+  //   } else {
+  //     nav.classList.remove('bg-white', 'shadow-sm');
+  //   }
+  // });
 
   return (
     <Fragment>
@@ -48,7 +70,7 @@ const Layout = ({ children, seoData, isNoIndex }) => {
       <nav className="navbar fixed-top navbar-expand-lg navbar-light">
         <div className="container">
           <Link className="navbar-brand" href="/" passHref>
-            <Image src="/img/logo-seia-web.png" alt="logo" height="40" />
+            <img src="/img/logo-seia-web.png" alt="logo" height="40" />
           </Link>
           <button
             className="navbar-toggler"
