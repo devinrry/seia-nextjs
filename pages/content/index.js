@@ -1,17 +1,26 @@
 import Image from 'next/image';
+import Layout from '@/components/Layout';
+import { DEFAULT_SEO } from '@/utils/index';
 
-export default function Content() {
+export default function Content({ SEO }) {
   return (
-    <div>
+    <Layout seoData={SEO}>
       <div className="content container mb-5">
         <div className="row align-items-center">
           <div className="col-lg-5 col-md-12 p-5">
             <div>
-              <Image
+              <img
                 src="/img/content-provider-1-2.png"
                 alt="content"
                 className="w-100 justify-content-center align-items-center"
               />
+              {/* <Image
+                src="/img/content-provider-1-2.png"
+                alt="content"
+                layout="fill"
+                className="w-100 justify-content-center align-items-center"
+                objectFit="cover"
+              /> */}
             </div>
           </div>
           <div className="col-lg-7 col-md-12 p-5">
@@ -46,7 +55,7 @@ export default function Content() {
             <div className="col">
               <div className="card h-100">
                 <div className="card-body">
-                  <h4 className="card-title">SOSIAL MEDIA MANAGEMEN</h4>
+                  <h4 className="card-title">SOSIAL MEDIA MANAGEMENT</h4>
                   <p className="card-text">
                     Mempresentasikan usaha kamu melalui pengelolaan akun sosial
                     media yang baik dalam upaya meningkatkan penjualan dan
@@ -55,9 +64,9 @@ export default function Content() {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <p>HARGA MULAI DARI</p>
-                  <h1 style="font-weight: bold;">Rp 1.499.000</h1>
+                  <h1 className="fw-bold">Rp 1.499.000</h1>
                   <p>KONSULTASI GRATIS</p>
-                  <a href="checkout.html" className="default-btn">
+                  <a href="/register" className="default-btn">
                     Pesan Sekarang
                   </a>
                 </div>
@@ -75,9 +84,9 @@ export default function Content() {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <p>HARGA MULAI DARI</p>
-                  <h1 style="font-weight: bold;">Rp 599.000</h1>
+                  <h1 className="fw-bold">Rp 599.000</h1>
                   <p>KONSULTASI GRATIS</p>
-                  <a href="checkout.html" className="default-btn">
+                  <a href="/register" className="default-btn">
                     Pesan Sekarang
                   </a>
                 </div>
@@ -95,9 +104,9 @@ export default function Content() {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <p>HARGA MULAI DARI</p>
-                  <h1 style="font-weight: bold;">Rp 99.000</h1>
+                  <h1 className="fw-bold">Rp 99.000</h1>
                   <p>KONSULTASI GRATIS</p>
-                  <a href="checkout.html" className="default-btn">
+                  <a href="/register" className="default-btn">
                     Pesan Sekarang
                   </a>
                 </div>
@@ -120,9 +129,9 @@ export default function Content() {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <p>HARGA MULAI DARI</p>
-                  <h1 style="font-weight: bold;">Rp 299.000</h1>
+                  <h1 className="fw-bold">Rp 299.000</h1>
                   <p>KONSULTASI GRATIS</p>
-                  <a href="checkout.html" className="default-btn">
+                  <a href="/register" className="default-btn">
                     Pesan Sekarang
                   </a>
                 </div>
@@ -139,9 +148,9 @@ export default function Content() {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <p>HARGA MULAI DARI</p>
-                  <h1 style="font-weight: bold;">Rp 299.000</h1>
+                  <h1 className="fw-bold">Rp 299.000</h1>
                   <p>KONSULTASI GRATIS</p>
-                  <a href="checkout.html" className="default-btn">
+                  <a href="/register" className="default-btn">
                     Pesan Sekarang
                   </a>
                 </div>
@@ -158,9 +167,9 @@ export default function Content() {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <p>HARGA MULAI DARI</p>
-                  <h1 style="font-weight: bold;">Rp 49.000</h1>
+                  <h1 className="fw-bold">Rp 49.000</h1>
                   <p>KONSULTASI GRATIS</p>
-                  <a href="checkout.html" className="default-btn">
+                  <a href="/register" className="default-btn">
                     Pesan Sekarang
                   </a>
                 </div>
@@ -221,6 +230,34 @@ export default function Content() {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const title = 'Content Provider';
+  const author = 'devi';
+  const SEO = {
+    ...DEFAULT_SEO,
+    title,
+    author,
+    openGraph: {
+      type: 'website',
+      locale: 'id_ID',
+      url: 'https://seia-kodekoding.com',
+      title,
+      site_name: 'SEIA',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@KodeKoding',
+      title,
+    },
+  };
+  return {
+    props: {
+      SEO,
+    },
+    revalidate: 10,
+  };
 }

@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
+import { DEFAULT_SEO } from '@/utils/index';
 
-export default function Home() {
+export default function Home({ SEO }) {
   return (
-    <Layout>
+    <Layout seoData={SEO}>
       <div className="main-banner">
         <div className="container">
           <div className="row align-items-center">
@@ -18,7 +19,10 @@ export default function Home() {
                   digital saat ini.
                 </p>
                 <button type="button" className="default-btn">
-                  Selengkapnya<span></span>
+                  <Link href="/tentang-kami" passHref>
+                    Selengkapnya
+                  </Link>
+                  <span></span>
                 </button>
               </div>
             </div>
@@ -26,8 +30,8 @@ export default function Home() {
               <div className="main-banner-wrapper-image">
                 <img
                   src="/img/bg-e1604710640565.png"
+                  alt="banner"
                   className="d-inline w-100"
-                  // style={{ height: auto; maxWidth: 100% }}
                 />
               </div>
             </div>
@@ -40,14 +44,18 @@ export default function Home() {
           <div className="row row-cols-1 row-cols-md-3 g-3">
             <div className="col">
               <div className="card h-100">
-                <img src="/img/web-dev.png" alt="" className="card-img-top" />
+                <img
+                  src="/img/web-dev.png"
+                  alt="web-dev"
+                  className="card-img-top"
+                />
                 <div className="card-body text-center">
                   <h5 className="card-title">Website Development</h5>
                   <p className="card-text">
                     Tingkatkan nilai dan kredibilitas usaha anda untuk
                     menjangkau pasar yang lebih luas lagi.
                   </p>
-                  <a href="" className="btn btn-link">
+                  <a href="/web-dev" className="btn btn-link">
                     Selengkapnya
                   </a>
                 </div>
@@ -55,14 +63,18 @@ export default function Home() {
             </div>
             <div className="col">
               <div className="card h-100">
-                <img src="/img/branding.png" alt="" className="card-img-top" />
+                <img
+                  src="/img/branding.png"
+                  alt="branding"
+                  className="card-img-top"
+                />
                 <div className="card-body text-center">
                   <h5 className="card-title">Branding & Design</h5>
                   <p className="card-text">
                     Produk saja tidak cukup. Branding dan Desain merupakan
                     faktor penting untuk usaha Anda.
                   </p>
-                  <a href="" className="btn btn-link">
+                  <a href="/branding" className="btn btn-link">
                     Selengkapnya
                   </a>
                 </div>
@@ -72,7 +84,7 @@ export default function Home() {
               <div className="card h-100">
                 <img
                   src="/img/content-provider-1-2.png"
-                  alt=""
+                  alt="content"
                   className="card-img-top"
                 />
                 <div className="card-body text-center">
@@ -81,7 +93,7 @@ export default function Home() {
                     Membantu Anda dalam merencanakan, membuat dan mengelola
                     konten digital.
                   </p>
-                  <a href="" className="btn btn-link">
+                  <a href="/content" className="btn btn-link">
                     Selengkapnya
                   </a>
                 </div>
@@ -112,4 +124,32 @@ export default function Home() {
       </div>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const title = 'Beranda';
+  const author = 'devi';
+  const SEO = {
+    ...DEFAULT_SEO,
+    title,
+    author,
+    openGraph: {
+      type: 'website',
+      locale: 'id_ID',
+      url: 'https://seia-kodekoding.com',
+      title,
+      site_name: 'SEIA',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@KodeKoding',
+      title,
+    },
+  };
+  return {
+    props: {
+      SEO,
+    },
+    revalidate: 10,
+  };
 }

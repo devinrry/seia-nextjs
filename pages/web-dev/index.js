@@ -1,13 +1,15 @@
 import Image from 'next/image';
+import Layout from '@/components/Layout';
+import { DEFAULT_SEO } from '@/utils/index';
 
-export default function WebDev() {
+export default function WebDev({ SEO }) {
   return (
-    <div>
+    <Layout seoData={SEO}>
       <div className="content container mb-5">
         <div className="row align-items-center">
           <div className="col-lg-5 col-md-12 p-5">
             <div>
-              <Image
+              <img
                 src="/img/web-dev.png"
                 alt="web-dev"
                 className="w-100 justify-content-center align-items-center"
@@ -55,9 +57,9 @@ export default function WebDev() {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <p>HARGA MULAI DARI</p>
-                  <h1 style="font-weight: bold;">Rp 499.000</h1>
+                  <h1 className="fw-bold">Rp 499.000</h1>
                   <p>KONSULTASI GRATIS</p>
-                  <a href="checkout.html" className="default-btn">
+                  <a href="/register" className="default-btn">
                     Pesan Sekarang
                   </a>
                 </div>
@@ -75,9 +77,9 @@ export default function WebDev() {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <p>HARGA MULAI DARI</p>
-                  <h1 style="font-weight: bold;">Rp 2.999.000</h1>
+                  <h1 className="fw-bold">Rp 2.999.000</h1>
                   <p>KONSULTASI GRATIS</p>
-                  <a href="checkout.html" className="default-btn">
+                  <a href="/register" className="default-btn">
                     Pesan Sekarang
                   </a>
                 </div>
@@ -94,9 +96,9 @@ export default function WebDev() {
                 </div>
                 <div className="card-footer bg-transparent border-0">
                   <p>HARGA MULAI DARI</p>
-                  <h1 style="font-weight: bold;">Rp 99.000</h1>
+                  <h1 className="fw-bold">Rp 99.000</h1>
                   <p>KONSULTASI GRATIS</p>
-                  <a href="checkout.html" className="default-btn">
+                  <a href="/register" className="default-btn">
                     Pesan Sekarang
                   </a>
                 </div>
@@ -157,6 +159,34 @@ export default function WebDev() {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const title = 'Website Development';
+  const author = 'devi';
+  const SEO = {
+    ...DEFAULT_SEO,
+    title,
+    author,
+    openGraph: {
+      type: 'website',
+      locale: 'id_ID',
+      url: 'https://seia-kodekoding.com',
+      title,
+      site_name: 'SEIA',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@KodeKoding',
+      title,
+    },
+  };
+  return {
+    props: {
+      SEO,
+    },
+    revalidate: 10,
+  };
 }
