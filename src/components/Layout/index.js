@@ -87,9 +87,9 @@ const Layout = ({ children, seoData, isNoIndex }) => {
             <div className="mx-auto"></div>
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link href="/" className="nav-link" passHref>
+                <a href="/" className="nav-link" passHref>
                   Beranda
-                </Link>
+                </a>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -104,34 +104,34 @@ const Layout = ({ children, seoData, isNoIndex }) => {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <Link href="/branding" className="dropdown-item" passHref>
+                    <a href="/branding" className="dropdown-item" passHref>
                       Branding & Design
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="/content" className="dropdown-item" passHref>
+                    <a href="/content" className="dropdown-item" passHref>
                       Content Provider
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="/web-dev" className="dropdown-item" passHref>
+                    <a href="/web-dev" className="dropdown-item" passHref>
                       Website Development
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="/workshop" className="dropdown-item" passHref>
+                    <a href="/workshop" className="dropdown-item" passHref>
                       Workshop
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </li>
               <li className="nav-item">
-                <Link href="/about" className="nav-link">
+                <a href="/tentang-kami" className="nav-link">
                   Tentang Kami
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <a href="" className="nav-link">
+                <a href="/kontak" className="nav-link">
                   Kontak
                 </a>
               </li>
